@@ -1,11 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Zaczęło się od pytania...`,
     author: {
-      name: `Kyle Mathews`,
+      name: `Agnieszka Korpal`,
       summary: `who lives and works in San Francisco building useful things.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    description: `Blog Agnieszki Korpal`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
     social: {
       twitter: `kylemathews`,
@@ -33,7 +33,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590,
+              maxWidth: 790,
             },
           },
           {
@@ -60,8 +60,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Zaczęło się od pytania - Agnieszka Korpal`,
+        short_name: `Aga Korpal blog`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
