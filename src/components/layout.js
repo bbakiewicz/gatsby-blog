@@ -1,11 +1,26 @@
 import React from "react"
 import { Link } from "gatsby"
+import { useStaticQuery, graphql } from 'gatsby'
+import Image from 'gatsby-image'
 
 import { rhythm, scale } from "../utils/typography"
 
 const Layout = ({ location, title, children }) => {
+  const data = useStaticQuery(graphql`
+  query {
+    background: file(absolutePath: { regex: "/aga-k-tlo.png/" }) {
+      childImageSharp {
+        fluid(maxWidth: 700, quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+  `)
+
   const rootPath = `${__PATH_PREFIX__}/`
   let header
+  const backgroundImage = data.background.childImageSharp.fluid
 
   if (location.pathname === rootPath) {
     header = (
@@ -13,6 +28,16 @@ const Layout = ({ location, title, children }) => {
         style={{
           height: `100vh`,
         }}>
+        <Image 
+          fluid={backgroundImage}
+          style={{
+            position: `absolute`,
+            top: `0`,
+            left: `0`,
+            width: `100%`,
+            height: `auto`,
+            zIndex: `-1`,
+          }} />
         <h1
           style={{
             ...scale(1.5),
