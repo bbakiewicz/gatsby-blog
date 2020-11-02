@@ -6,7 +6,7 @@
  */
 
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import Image from "gatsby-image"
 
 import { rhythm } from "../utils/typography"
@@ -16,7 +16,7 @@ const Bio = () => {
     query BioQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
         childImageSharp {
-          fixed(width: 50, height: 50) {
+          fixed(width: 100, height: 100) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -46,6 +46,7 @@ const Bio = () => {
       style={{
         display: `flex`,
         marginBottom: rhythm(2.5),
+        borderTop: `solid 1px black`
       }}
     >
       {avatar && (
@@ -55,7 +56,8 @@ const Bio = () => {
           style={{
             marginRight: rhythm(1 / 2),
             marginBottom: 0,
-            minWidth: 50,
+            marginTop: 10,
+            minWidth: 100,
             borderRadius: `100%`,
           }}
           imgStyle={{
@@ -65,10 +67,10 @@ const Bio = () => {
       )}
       {author?.name && (
         <p>
-          Written by <strong>{author.name}</strong> {author?.summary || null}
+          Witaj na moim blogu. Nazywam się <strong>{author.name}</strong> {author?.summary || null}
           {` `}
-          <a href={`https://twitter.com/${social?.twitter || ``}`}>
-            You should follow them on Twitter
+          Chcesz dowiedzieć się o mnie czegoś więcej? Zapraszam do sekcji <Link to="/omnie">O mnie</Link>
+           oraz na moje media społecznościowe <a href={`https://twitter.com/${social?.twitter || ``}`}>
           </a>
         </p>
       )}

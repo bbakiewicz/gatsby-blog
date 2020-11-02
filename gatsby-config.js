@@ -3,7 +3,7 @@ module.exports = {
     title: `Zaczęło się od pytania...`,
     author: {
       name: `Agnieszka Korpal`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      summary: `motywują mnie wyzwania`,
     },
     description: `Blog Agnieszki Korpal`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,

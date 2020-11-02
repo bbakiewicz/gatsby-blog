@@ -23,7 +23,7 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
-      <Bio />
+      
       {posts.map((post) => {
         const title = post.frontmatter.title || post.fields.slug
         return (
@@ -36,11 +36,12 @@ const BlogIndex = ({ data, location }) => {
               <h3
                 style={{
                   marginBottom: rhythm(1 / 4),
+                  
                 }}
               >
                 <Link
-                  style={{ boxShadow: `none` }}
-                  to={post.fields.slug}
+                  style={{ boxShadow: `none`,  }}
+                  to="/omnie"
                   itemProp="url"
                 >
                   <span itemProp="headline">{title}</span>
@@ -59,6 +60,7 @@ const BlogIndex = ({ data, location }) => {
           </article>
         )
       })}
+      <Bio />
     </Layout>
   )
 }
