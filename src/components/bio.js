@@ -69,7 +69,7 @@ const Bio = () => {
         <p>
           Witaj na moim blogu. Nazywam się <strong>{author.name}</strong> {author?.summary || null}
           {` `}
-          Chcesz dowiedzieć się o mnie czegoś więcej? Zapraszam do sekcji <Link to="/omnie">O mnie</Link>
+          Chcesz dowiedzieć się o mnie czegoś więcej? Zapraszam do sekcji <Link to="/omnie">O mnie </Link>
            oraz na moje media społecznościowe <a href={`https://twitter.com/${social?.twitter || ``}`}>
           </a>
         </p>

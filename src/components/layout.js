@@ -1,34 +1,43 @@
 import React from "react"
 import { Link } from "gatsby"
-import { useStaticQuery, graphql } from 'gatsby'
-import Image from 'gatsby-image'
+import { useStaticQuery, graphql } from "gatsby"
+import Image from "gatsby-image"
 
 import { rhythm, scale } from "../utils/typography"
 
 const Layout = ({ location, title, children }) => {
   const data = useStaticQuery(graphql`
-  query {
-    background: file(absolutePath: { regex: "/aga-k-tlo.png/" }) {
-      childImageSharp {
-        fluid(maxWidth: 700, quality: 100) {
-          ...GatsbyImageSharpFluid
+    query {
+      background: file(absolutePath: { regex: "/aga-k-tlo.png/" }) {
+        childImageSharp {
+          fluid(maxWidth: 700, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      signature: file(absolutePath: { regex: "/aga-korpal-podpis.png/" }) {
+        childImageSharp {
+          fluid(maxWidth: 400, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
         }
       }
     }
-  }
   `)
 
   const rootPath = `${__PATH_PREFIX__}/`
   let header
   const backgroundImage = data.background.childImageSharp.fluid
+  const signature = data.signature.childImageSharp.fluid
 
   if (location.pathname === rootPath) {
     header = (
       <div
         style={{
-          height: `100vh`,
-        }}>
-        <Image 
+          height: `50vh`,
+        }}
+      >
+        <Image
           fluid={backgroundImage}
           style={{
             position: `absolute`,
@@ -37,24 +46,41 @@ const Layout = ({ location, title, children }) => {
             width: `100%`,
             height: `auto`,
             zIndex: `-1`,
-          }} />
-        <h1
+          }}
+        />
+        <div
           style={{
-            ...scale(1.5),
-            
             marginTop: `50%`,
+            transform: `translateY(-50%)`,
+            display: `flex`,
+            flexDirection: `column`,
+            alignItems: `center`
           }}
         >
-          <Link
+          <h1
             style={{
-              boxShadow: `none`,
-              color: `inherit`,
+              ...scale(1.5),
             }}
-            to={`/`}
           >
-            {title}
-          </Link>
-        </h1>
+            <Link
+              style={{
+                boxShadow: `none`,
+                color: `inherit`,
+                textDecoration: `none`,
+              }}
+              to={`/`}
+            >
+              {title}
+            </Link>
+          </h1>
+          <Image
+            fluid={signature}
+            style={{
+              width: `400px`,
+              margin: `0 auto`
+            }}
+          />
+        </div>
       </div>
     )
   } else {
@@ -62,6 +88,7 @@ const Layout = ({ location, title, children }) => {
       <h3
         style={{
           fontFamily: `Montserrat, sans-serif`,
+
           marginTop: 0,
         }}
       >
@@ -87,11 +114,11 @@ const Layout = ({ location, title, children }) => {
       }}
     >
       <header>{header}</header>
-      <main>{children}</main>
+      <main style={{ paddingTop: `20vh` }}>{children}</main>
       <footer>
         © {new Date().getFullYear()}, Built with
         {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
+        <a href="https://www.bazymazy.pl">Bazy Mazy</a>
       </footer>
     </div>
   )

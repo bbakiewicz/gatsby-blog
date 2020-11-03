@@ -41,7 +41,7 @@ const BlogIndex = ({ data, location }) => {
               >
                 <Link
                   style={{ boxShadow: `none`,  }}
-                  to="/omnie"
+                  to={post.fields.slug}
                   itemProp="url"
                 >
                   <span itemProp="headline">{title}</span>

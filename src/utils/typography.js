@@ -4,9 +4,9 @@ import Kirkham from "typography-theme-moraga"
   return {
     "a.gatsby-resp-image-link": {
       boxShadow: `none`,
-      
+      textDecoration: `none`,
     },
-    "a.gatsby-resp-image-link:hover": {
+    "a.gatsby-resp-image-link::hover": {
       
       textDecoration: `none`,
     },
