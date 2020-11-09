@@ -1,5 +1,5 @@
 import Typography from "typography"
-import Kirkham from "typography-theme-moraga"
+import Kirkham from "typography-theme-kirkham"
  Kirkham.overrideThemeStyles = () => {
   return {
     "a.gatsby-resp-image-link": {
@@ -10,10 +10,14 @@ import Kirkham from "typography-theme-moraga"
       
       textDecoration: `none`,
     },
+    "a": {
+      textDecoration: `none`,
+      color: `#595959`
+    }
   }
 }
 
-delete Kirkham.googleFonts
+// delete Kirkham.googleFonts
 
 const typography = new Typography(Kirkham)
 

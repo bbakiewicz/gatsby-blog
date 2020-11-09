@@ -31,12 +31,25 @@ const BlogIndex = ({ data, location }) => {
             key={post.fields.slug}
             itemScope
             itemType="http://schema.org/Article"
+            style={{
+              marginBottom: rhythm(2),
+              borderBottom: `1px solid #595959`,
+              
+            }}
           >
-            <header>
-              <h3
+            <header
+              style={{
+                display: `flex`,
+                flexDirection: `column`,
+                alignItems: `center`,
+                marginBottom: `30px`,
+              }}
+              >
+              <h2
                 style={{
-                  marginBottom: rhythm(1 / 4),
-                  
+                  marginBottom: rhythm(1/2),
+                  fontSize: rhythm(2),
+                  color: `#595959`,
                 }}
               >
                 <Link
@@ -46,17 +59,17 @@ const BlogIndex = ({ data, location }) => {
                 >
                   <span itemProp="headline">{title}</span>
                 </Link>
-              </h3>
+              </h2>
               <small>{post.frontmatter.date}</small>
             </header>
-            <section>
+            {/* <section>
               <p
                 dangerouslySetInnerHTML={{
                   __html: post.frontmatter.description || post.excerpt,
                 }}
                 itemProp="description"
               />
-            </section>
+            </section> */}
           </article>
         )
       })}

@@ -10,8 +10,8 @@ const Layout = ({ location, title, children }) => {
     query {
       background: file(absolutePath: { regex: "/aga-k-tlo.png/" }) {
         childImageSharp {
-          fluid(maxWidth: 700, quality: 100) {
-            ...GatsbyImageSharpFluid
+          fixed(width: 1900) {
+            ...GatsbyImageSharpFixed
           }
         }
       }
@@ -22,13 +22,21 @@ const Layout = ({ location, title, children }) => {
           }
         }
       }
+      scroll: file(absolutePath: { regex: "/scroll-icon.png/" }) {
+        childImageSharp {
+          fixed(width: 25) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
     }
   `)
 
   const rootPath = `${__PATH_PREFIX__}/`
   let header
-  const backgroundImage = data.background.childImageSharp.fluid
+  const backgroundImage = data.background.childImageSharp.fixed
   const signature = data.signature.childImageSharp.fluid
+  const scroll = data.scroll.childImageSharp.fixed
 
   if (location.pathname === rootPath) {
     header = (
@@ -38,13 +46,11 @@ const Layout = ({ location, title, children }) => {
         }}
       >
         <Image
-          fluid={backgroundImage}
+          fixed={backgroundImage}
           style={{
             position: `absolute`,
             top: `0`,
             left: `0`,
-            width: `100%`,
-            height: `auto`,
             zIndex: `-1`,
           }}
         />
@@ -54,7 +60,7 @@ const Layout = ({ location, title, children }) => {
             transform: `translateY(-50%)`,
             display: `flex`,
             flexDirection: `column`,
-            alignItems: `center`
+            alignItems: `center`,
           }}
         >
           <h1
@@ -77,8 +83,12 @@ const Layout = ({ location, title, children }) => {
             fluid={signature}
             style={{
               width: `400px`,
-              margin: `0 auto`
+              margin: `0 auto`,
             }}
+          />
+          <Image
+            fixed={scroll}
+            //ad pusle styles
           />
         </div>
       </div>
@@ -109,7 +119,7 @@ const Layout = ({ location, title, children }) => {
       style={{
         marginLeft: `auto`,
         marginRight: `auto`,
-        maxWidth: rhythm(34),
+        maxWidth: rhythm(44),
         padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
       }}
     >
